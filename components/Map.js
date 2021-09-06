@@ -1,13 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import tw from "tailwind-react-native-classnames"; 
-import Map from '../components/Map';
 import MapView, { Marker } from "react-native-maps";
 import { selectOrigin } from '../slices/navSlice';
 import { useSelector } from 'react-redux';
 
 const Map = () => {
-    
+
     const origin = useSelector(selectOrigin);
 
     return (
