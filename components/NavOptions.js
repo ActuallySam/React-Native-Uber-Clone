@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Image, Text, FlatList, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements/dist/icons/Icon';
@@ -18,7 +18,7 @@ const data = [
         title: "Order Food",
         image: "https://links.papareact.com/28w",
         screen: "EatsScreen",
-    }
+    },
 ];
 
 const NavOptions = () => {
@@ -29,14 +29,13 @@ const NavOptions = () => {
     return (
         <FlatList
             data={data}
-            horizontal
+            horizontal={true}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
                 <TouchableOpacity 
                     onPress={() => navigation.navigate(item.screen)}
-                    style={tw`p-2 pl-6 pl-8 pt-4 bg-gray-200 m-2 w-40`}
-                    disabled={!origin} >
-                    <View style={tw`${!origin && "opacity-20"}`}>
+                    style={tw`p-2 pl-6 pl-8 pt-4 bg-gray-200 m-2 w-40`} >
+                    <View>
                         <Image 
                             style={{ 
                                 width: 120, 

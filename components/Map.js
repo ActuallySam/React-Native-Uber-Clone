@@ -29,8 +29,8 @@ const Map = () => {
             style={tw`flex-1`}
             mapType="mutedStandard"
             initialRegion={{
-                latitude: origin.location.lat,
-                longitude: origin.location.long,
+                latitude: origin ? origin.location.lat : 0,
+                longitude: origin ? origin.location.lng : 0,
                 latitudeDelta: 0.005,
                 longitudeDelta: 0.005,
             }}
@@ -41,6 +41,7 @@ const Map = () => {
                     destination={destination.description}
                     apikey={GOOGLE_MAPS_APIKEY}
                     strokeColor="black"
+                    strokeWidth={2}
                 />
             )}
 
@@ -48,7 +49,7 @@ const Map = () => {
                 <Marker 
                     coordinate={{
                         latitude: origin.location.lat,
-                        longitude: origin.location.long,
+                        longitude: origin.location.lng,
                     }}
                     title="Origin"
                     description={origin.description}
