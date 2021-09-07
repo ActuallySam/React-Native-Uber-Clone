@@ -11,11 +11,11 @@ import { useNavigation } from "@react-navigation/native";
 import { Alert } from "react-native";
 
 export default function Map() {
+
     const origin = useSelector(selectOrigin);
     const destination = useSelector(selectDestination);
     const dispatch = useDispatch();
     const mapRef = useRef(null);
-
     const navigation = useNavigation();
 
     useEffect(() => {
@@ -42,7 +42,7 @@ export default function Map() {
     }, [origin, destination]);
 
     if (!origin) {
-        Alert.alert("Ops!", "Informe a origem antes de prosseguir!");
+        Alert.alert("Oops! Enter the Origin before preogressing");
 
         navigation.goBack();
     }
@@ -53,27 +53,28 @@ export default function Map() {
             style={tw`flex-1`}
             mapType="mutedStandard"
             initialRegion={{
-                latitude: origin ? origin.location.lat : 0,
-                longitude: origin ? origin.location.lng : 0,
-                latitudeDelta: 0.0005,
-                longitudeDelta: 0.0005,
+                latitude: origin.location.lat,
+                longitude: origin.location.lng,
+                latitudeDelta: 0.005,
+                longitudeDelta: 0.005,
             }}
         >
             {origin && destination && (
                 <MapViewDirections
                     origin={origin.description}
                     destination={destination.description}
+                    lineDashPattern={[1]}
                     apikey={GOOGLE_MAPS_APIKEY}
                     strokeWidth={3}
-                    strokeColor="black"
+                    strokeColor="#000000"
                 />
             )}
 
             {origin?.location && (
                 <Marker
                     coordinate={{
-                        latitude: origin.location.lat,
-                        longitude: origin.location.lng,
+                        latitude: origin ? origin.location.lat : 0,
+                        longitude: origin ? origin.location.lng : 0,
                     }}
                     title="Origin"
                     description={origin.description}
@@ -84,11 +85,11 @@ export default function Map() {
             {destination && destination.location && (
                 <Marker
                     coordinate={{
-                        latitude: origin.location.lat,
-                        longitude: origin.location.lng,
+                        latitude: destination.location.lat,
+                        longitude: destination.location.lng,
                     }}
                     title="Destination"
-                    description={origin.description}
+                    description={destination.description}
                     identifier="destination"
                 />
             )}

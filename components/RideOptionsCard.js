@@ -13,6 +13,8 @@ import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { selectTravelTimeInformation } from "../slices/navSlice";
 
+global.Intl = require('intl');
+
 const data = [
     {
         id: "Uber-X-123",
@@ -72,7 +74,7 @@ const RideOptionsCard = () => {
                         return (
                             <TouchableOpacity
                                 onPress={() => setSelected(item)}
-                                style={tw`flex-row justify-between item-center px-10
+                                style={tw`flex-row justify-between items-center px-10
                                 ${id === selected?.id && "bg-gray-200"}`}
                             >
                                 <Image
@@ -88,14 +90,11 @@ const RideOptionsCard = () => {
                                     <Text>{travelTimeInformation?.duration?.text} travel time</Text>
                                 </View>
                                 <Text style={tw`text-xl`}>
-                                    {new Intl.NumberFormat("en-gb", {
+                                    {new Intl.NumberFormat("en-IN", {
                                         style: "currency",
-                                        currency: "GBP",
+                                        currency: "INR",
                                     }).format(
-                                        (travelTimeInformation?.duration.value *
-                                            SURGE_CHARGE_RATE *
-                                            multiplier) /
-                                        100
+                                        (travelTimeInformation?.duration?.value * SURGE_CHARGE_RATE *   multiplier) / 10
                                     )}
                                 </Text>
                             </TouchableOpacity>

@@ -2,6 +2,8 @@ import React from 'react';
 import { TouchableOpacity, FlatList, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 
 const data = [
     {
