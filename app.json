@@ -4,9 +4,9 @@
     "slug": "uber-clone",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/uber.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/uber.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/uber.png",
         "backgroundColor": "#FFFFFF"
       }
     },
